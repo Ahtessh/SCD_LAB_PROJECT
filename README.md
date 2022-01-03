@@ -1,3 +1,7 @@
 # SCD_LAB_PROJECT
 Ahtesham 
-CReating simple JAVA GUI program with database connectivity 
+Creating simple JAVA GUI program with database connectivity 
+So far Done with Registration and login form and a exported database file 
+Co Workers / Buddies
+Danyial Ahmed
+Joun Ahmed Turabi
