@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2022 at 05:36 PM
+-- Generation Time: Jan 22, 2022 at 02:26 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -38,9 +38,10 @@ CREATE TABLE `addbooks` (
 --
 
 INSERT INTO `addbooks` (`B_Id`, `B_Name`, `B_Self_No`) VALUES
-('001', 'Harry Potter', '2'),
-('002', 'L O R', '3'),
-('22', 'PEAKY', '4');
+('112', 'Harry potter', '1'),
+('22', 'PEAKY', '4'),
+('256', 'Gitch', '3'),
+('552', 'Rings', '4');
 
 -- --------------------------------------------------------
 
@@ -58,8 +59,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Username`, `Password`) VALUES
-('Admin', '111'),
-('dad', '111');
+('admin', '111');
 
 -- --------------------------------------------------------
 
@@ -68,8 +68,8 @@ INSERT INTO `admin` (`Username`, `Password`) VALUES
 --
 
 CREATE TABLE `issue_books` (
-  `stu_id` varchar(10) DEFAULT NULL,
-  `book_id` varchar(10) DEFAULT NULL
+  `stu_id` varchar(10) NOT NULL,
+  `book_id` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -77,8 +77,7 @@ CREATE TABLE `issue_books` (
 --
 
 INSERT INTO `issue_books` (`stu_id`, `book_id`) VALUES
-('3', '001'),
-('3', '002');
+('53', '256');
 
 -- --------------------------------------------------------
 
@@ -98,7 +97,9 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`stu_roll`, `stu_name`, `stu_number`) VALUES
 ('2', 'PEAKY', '422'),
-('3', 's3', '333');
+('53', 'Ahtesham', '0316'),
+('60', 'Daniyal', '0333'),
+('64', 'joun', '033');
 
 -- --------------------------------------------------------
 
@@ -143,8 +144,7 @@ ALTER TABLE `admin`
 -- Indexes for table `issue_books`
 --
 ALTER TABLE `issue_books`
-  ADD KEY `book_FK` (`book_id`),
-  ADD KEY `stu_FK` (`stu_id`);
+  ADD PRIMARY KEY (`stu_id`,`book_id`);
 
 --
 -- Indexes for table `students`
@@ -157,17 +157,6 @@ ALTER TABLE `students`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`Username`,`Password`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `issue_books`
---
-ALTER TABLE `issue_books`
-  ADD CONSTRAINT `book_FK` FOREIGN KEY (`book_id`) REFERENCES `addbooks` (`B_Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stu_FK` FOREIGN KEY (`stu_id`) REFERENCES `students` (`stu_roll`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
